@@ -33,9 +33,9 @@
     --ion-color-base: var(--ion-color-lightgrey);
   }
   ion-card {    
-    max-width: 80%;
+    width: 75%;
   }
-  .card-center {
+  .card-center { 
     display: flex;
     justify-content: center;
   }

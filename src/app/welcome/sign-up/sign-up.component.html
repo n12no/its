@@ -1,0 +1,154 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-button (click)="onCancel()" routerLink="" routerDirection="back">
+                <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>ITS.Connect Portal - Registrierung</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+        <div class="card-center">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title>Willkommen</ion-card-title>
+                    <ion-card-subtitle>Registrieren Sie sich, um fortzufahren</ion-card-subtitle>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">E-Mail Adresse</ion-label>
+                                    <ion-input formControlName="email"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.email.valid && signUpForm.controls.email.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">E-Mail Adresse eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Password</ion-label>
+                                    <ion-input type="password" formControlName="password"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.password.valid && signUpForm.controls.password.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Password eingeben!</ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Firmenname</ion-label>
+                                    <ion-input formControlName="companyName"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.companyName.valid && signUpForm.controls.companyName.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Firmenname eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Straße</ion-label>
+                                    <ion-input formControlName="street"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.street.valid && signUpForm.controls.street.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Straße eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Hausnummer</ion-label>
+                                    <ion-input formControlName="streetNumber"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.streetNumber.valid && signUpForm.controls.streetNumber.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Hausnummer eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Zusatz</ion-label>
+                                    <ion-input formControlName="streetAddition"></ion-input>
+                                </ion-item>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">PLZ</ion-label>
+                                    <ion-input formControlName="postalcode"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.postalcode.valid && signUpForm.controls.postalcode.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Postleitzahl eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Stadt</ion-label>
+                                    <ion-input formControlName="town"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.town.valid && signUpForm.controls.town.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Stadt eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-item>
+                                    <ion-label position="floating">Land</ion-label>
+                                    <ion-input formControlName="country"></ion-input>
+                                </ion-item>
+                                <div *ngIf="!signUpForm.controls.country.valid && signUpForm.controls.country.touched"
+                                    class="error-message">
+                                    <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                                    <ion-note color="danger">Land eingeben! </ion-note>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-button [disabled]="!signUpForm.valid" type="submit" fill="solid">Registrieren
+                                </ion-button>
+                                <ion-button routerLink="/welcome" routerDirection="back" (click)="onCancel()"
+                                    fill="clear">
+                                    Abbrechen
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <ion-col>
+                                <ion-note>Mit der Registrierung akzeptieren Sie die <a target="_blank"
+                                        href="../../../assets/agb/AGB_ITS-Connect_2019.pdf">AGB</a> des Horst Görtz
+                                    Institut.</ion-note>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-card-content>
+            </ion-card>
+        </div>
+    </form>
+
+</ion-content>

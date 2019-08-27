@@ -5,7 +5,6 @@ import { CompanyAdress } from '../shared/company.adress.model';
 import { BillingAdress } from '../shared/billing.adress.model';
 import { Person } from '../shared/person.model';
 import { Router } from '@angular/router';
-import { NgOnChangesFeature } from '@angular/core/src/render3';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -18,15 +17,16 @@ export class CompanyComponent implements OnInit {
   companyAdress: CompanyAdress;
   billingAdress: BillingAdress;
   person: Person;
+  selectedTab = 'profil';
   constructor(public companyService: CompanyService, public router: Router, public authService: AuthenticationService) { }
 
   ngOnInit() {
-   console.log('company.component: ngOnInit');
-   this.company = this.companyService.getCompany();
-   this.companyAdress = this.companyService.getCompanyAdress();
-   this.billingAdress = this.companyService.getBillingAdress();
-   this.person = this.companyService.getContact();
-   console.log(this.company);
+    console.log('company.component: ngOnInit');
+    this.company = this.companyService.getCompany();
+    this.companyAdress = this.companyService.getCompanyAdress();
+    this.billingAdress = this.companyService.getBillingAdress();
+    this.person = this.companyService.getContact();
+    console.log(this.company);
   }
   onLogOut() {
     this.authService.logoutUser().then(() => {
@@ -41,22 +41,22 @@ export class CompanyComponent implements OnInit {
     const id: string = e.srcElement.id;
     switch (id) {
       case '0': {
-         // Allgemeine Firmeninformationen
-         console.log(id);
-         this.router.navigateByUrl('tabs/profil/company-edit');
-         break;
+        // Allgemeine Firmeninformationen
+        console.log(id);
+        this.router.navigateByUrl('tabs/profil/company-edit');
+        break;
       }
       case '1': {
-         // Ansprechpartner
-         console.log(id);
-         this.router.navigateByUrl('tabs/profil/contact-edit');
-         break;
+        // Ansprechpartner
+        console.log(id);
+        this.router.navigateByUrl('tabs/profil/contact-edit');
+        break;
       }
       case '2': {
-         // Firmenadresse
-         console.log(id);
-         this.router.navigateByUrl('tabs/profil/company-adress-edit');
-         break;
+        // Firmenadresse
+        console.log(id);
+        this.router.navigateByUrl('tabs/profil/company-adress-edit');
+        break;
       }
       case '3': {
         // Rechnungsadresse
@@ -68,7 +68,7 @@ export class CompanyComponent implements OnInit {
         console.log('default: Event' + e);
         break;
       }
-   }
+    }
   }
 
 }

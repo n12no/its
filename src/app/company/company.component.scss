@@ -5,11 +5,16 @@
 .logo {
     padding-top: 5px;
 
-    height: 100px;
-    width: 150px;
+    height: 200;
+    width: 200px;
+    border-radius: 2px;
+    border-color: black;
     
 
     
     overflow: hidden;
 
+}
+ion-tabs {
+    display: contents;
 }

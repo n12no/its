@@ -4,125 +4,116 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <div class="card-center">
-    <ion-card>
-      <ion-grid>
-        <ion-row>
-          <ion-col>
+  <ion-tabs>
+    <ion-tab-bar slot="top" color="secondary">
+      <ion-tab-button [selected]="selectedTab == 'profil'" (click)="selectedTab='profil'">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Allgemein</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [selected]="selectedTab == 'contact'" (click)="selectedTab='contact'">
+        <ion-icon name="contact"></ion-icon>
+        <ion-label>Ansprechpartner</ion-label>
+      </ion-tab-button>
+      <ion-tab-button [selected]="selectedTab == 'billing-adress'" (click)="selectedTab='billing-adress'">
+        <ion-icon name="card"></ion-icon>
+        <ion-label>Rechnungsadresse</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+  <div *ngIf="selectedTab == 'profil'">
+    <ion-grid style="display: flex;">
+      <ion-row>
+        <ion-col>
+          <ion-title>Allgemeine Informationen</ion-title>
+          <div class="logo">
+            <img src="../../assets/HGI_Logo.svg" alt="">
+          </div>
+          <ion-item>
+            <ion-icon name="contact" slot="start"></ion-icon>
+            <ion-label>{{company.name}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="pin" slot="start"></ion-icon>
+            <ion-label>
+              {{companyAdress.street}} {{companyAdress.streetNumber}} {{companyAdress.streetAddition}}<br>
+              {{companyAdress.postalcode}} {{companyAdress.town}}<br>
+              {{companyAdress.country}}<br>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="globe" slot="start"></ion-icon>
+            <ion-label>{{company.url}}</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-button id="0" name="Informationen-Edit-Btn" fill="outline" (click)="onClick($event)">
+              Bearbeiten
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="selectedTab == 'contact'">
+    <ion-grid style="display: flex;">
+      <ion-row>
+        <ion-col>
+          <ion-title>Ansprechpartner</ion-title>
+          <ion-item>
+            <ion-icon name="person" slot="start"></ion-icon>
+            <ion-label>{{person.prename}} {{person.name}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="call" slot="start"></ion-icon>
+            <ion-label>
+              <ion-note>geschäftlich: </ion-note>{{person.phonenumber}}<br>
+              <ion-note>mobil: </ion-note>{{person.mobilenumber}}
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="mail" slot="start"></ion-icon>
+            <ion-label>
+              {{person.mail}}
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-button id="1" name="Ansprechparnter-Edit-Btn" fill="outline" (click)="onClick($event)">
+              Bearbeiten
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div *ngIf="selectedTab == 'billing-adress'">
+    <ion-grid style="display: flex;">
+      <ion-row>
+        <ion-col>
+          <ion-title>Rechnungsadresse</ion-title>
+          <ion-item>
+            <ion-icon name="pin" slot="start">Start</ion-icon>
+            <ion-label>
+              <ion-label><b>{{billingAdress.companyName}}</b></ion-label>
+              {{billingAdress.street}} {{billingAdress.streetNumber}} {{billingAdress.streetAddition}}<br>
+              {{billingAdress.postalcode}} {{billingAdress.town}}<br>
+              {{billingAdress.country}}<br>
+            </ion-label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="information-circle" slot="start">Information</ion-icon>
+            <ion-textarea>
+              {{billingAdress.note}}
+            </ion-textarea>
+          </ion-item>
 
-            <ion-card-header>
-              <ion-card-title>Allgemeine Informationen</ion-card-title>
-              <div class="logo">
-                <img src="../../assets/HGI_Logo.svg" alt="">
-              </div>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-item>
-                <ion-icon name="contact" slot="start"></ion-icon>
-                <ion-label>{{company.name}}</ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-icon name="globe" slot="start"></ion-icon>
-                <ion-label>{{company.url}}</ion-label>
-              </ion-item>
-              <ion-item lines="none">
-                <ion-button id="0" name="Informationen-Edit-Btn" fill="outline" (click)="onClick($event)">
-                  Bearbeiten
-                </ion-button>
-              </ion-item>
-            </ion-card-content>
-
-          </ion-col>
-          <ion-col>
-            <ion-card-header>
-              <ion-card-title>Ansprechpartner</ion-card-title>
-              <ion-card-subtitle>{{person.prename}} {{person.name}}</ion-card-subtitle>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-item>
-                <ion-icon name="call" slot="start"></ion-icon>
-                <ion-label>
-                  <p>{{person.phonenumber}}</p>
-                  <p>{{person.mobilenumber}}</p>
-                </ion-label>
-              </ion-item>
-              <ion-item>
-                <ion-icon name="mail" slot="start"></ion-icon>
-                <ion-label>
-                  <p>{{person.mail}}</p>
-                </ion-label>
-              </ion-item>
-              <ion-item lines="none">
-                <ion-button id="1" name="Ansprechparnter-Edit-Btn" fill="outline" (click)="onClick($event)">
-                  Bearbeiten
-                </ion-button>
-              </ion-item>
-            </ion-card-content>
-
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-card-header>
-              <ion-card-title>Firmenadresse</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-item lines="none">
-                <ion-icon name="pin" slot="start"></ion-icon>
-                <ion-label>
-                  <p>{{companyAdress.street}} {{companyAdress.streetNumber}} {{companyAdress.streetAddition}}</p>
-                  <p>{{companyAdress.postalcode}} {{companyAdress.town}}</p>
-                  <p>{{companyAdress.country}}</p>
-                </ion-label>
-              </ion-item>
-              <ion-item lines="none">
-                <ion-button id="2" slot="start" name="Firmenadresse-Edit-Btn" fill="outline" (click)="onClick($event)">
-                  Bearbeiten
-                </ion-button>
-              </ion-item>
-            </ion-card-content>
-
-          </ion-col>
-          <ion-col>
-            <ion-card-header>
-              <ion-card-title>Rechnungsadresse</ion-card-title>
-            </ion-card-header>
-
-            <ion-card-content>
-              <ion-item>
-                <ion-icon name="pin" slot="start">Start</ion-icon>
-                <ion-label>
-                  <ion-label>{{billingAdress.companyName}}</ion-label>
-                  <p>{{billingAdress.street}} {{billingAdress.streetNumber}} {{billingAdress.streetAddition}}</p>
-                  <p>{{billingAdress.postalcode}} {{billingAdress.town}}</p>
-                  <p>{{billingAdress.country}}</p>
-                </ion-label>
-              </ion-item>
-
-              <ion-item lines="none">
-                <ion-icon name="information-circle" slot="start">Information</ion-icon>
-                <ion-label>
-                  <p>{{billingAdress.note}}</p>
-                </ion-label>
-              </ion-item>
-              <ion-item lines="none">
-                <ion-button id="3" name="Rechnungsadresse-Edit-Btn" fill="outline" (click)="onClick($event)">
-                  Bearbeiten
-                </ion-button>
-              </ion-item>
-            </ion-card-content>
-
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-
-
-
-
-    </ion-card>
+          <ion-item lines="none">
+            <ion-button id="3" name="Rechnungsadresse-Edit-Btn" fill="outline" (click)="onClick($event)">
+              Bearbeiten
+            </ion-button>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
   <ion-button (click)="onLogOut()">Abmelden</ion-button>
+
 </ion-content>

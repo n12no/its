@@ -2,19 +2,27 @@
     padding-top: 1.25rem;
     
 }
-.logo {
+img {
     padding-top: 5px;
 
-    height: 200;
+    height: 200px;
     width: 200px;
-    border-radius: 2px;
+    
     border-color: black;
     
-
-    
-    overflow: hidden;
+ 
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
 
 }
 ion-tabs {
     display: contents;
+}
+ion-grid {
+    display: flex;
+    justify-content: center;
+}
+
+.tab-selected{
+    border-bottom: 2px solid var(--ion-color-primary);
 }

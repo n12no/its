@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CompanyService } from './company.service';
 import { Company } from '../shared/company.model';
 import { CompanyAdress } from '../shared/company.adress.model';
@@ -6,6 +6,7 @@ import { BillingAdress } from '../shared/billing.adress.model';
 import { Person } from '../shared/person.model';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { IonTabs } from '@ionic/angular';
 
 @Component({
   selector: 'app-company',
@@ -13,6 +14,7 @@ import { AuthenticationService } from '../services/authentication.service';
   styleUrls: ['./company.component.scss'],
 })
 export class CompanyComponent implements OnInit {
+  @ViewChild('tabs') tabs : IonTabs;
   company: Company;
   companyAdress: CompanyAdress;
   billingAdress: BillingAdress;

@@ -18,12 +18,12 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'profil',
+        path: 'profiltab',
         children: [
           {
             path: '',
             loadChildren: () =>
-              import('../company/company.module').then(m => m.CompanyModule)
+              import('../profiltab/profiltab.module').then(m => m.ProfiltabModule)
           }
         ]
       },
@@ -55,4 +55,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class MainTabRoutingModule {}
+export class MainTabRoutingModule { }

@@ -1,0 +1,41 @@
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-title>Allgemeine Informationen</ion-title>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <div class="logo">
+        <img src="../../assets/HGI_Logo.svg" alt="">
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-icon name="contact" slot="start"></ion-icon>
+        <ion-label>{{company.name}}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="pin" slot="start"></ion-icon>
+        <ion-label>
+          {{companyAdress.street}} {{companyAdress.streetNumber}} {{companyAdress.streetAddition}}<br>
+          {{companyAdress.postalcode}} {{companyAdress.town}}<br>
+          {{companyAdress.country}}<br>
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="globe" slot="start"></ion-icon>
+        <ion-label>{{company.url}}</ion-label>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-button id="0" name="Informationen-Edit-Btn" fill="outline" (click)="onClick($event)">
+          Bearbeiten
+        </ion-button>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-button (click)="onLogOut()">Abmelden</ion-button>
+</ion-grid>

@@ -7,8 +7,6 @@ import { IonTabs } from '@ionic/angular';
   styleUrls: ['./maintab.component.scss'],
 })
 export class MaintabComponent implements OnInit {
-  @ViewChild('tabs') tabs: IonTabs;
-  toolbarTitle = '';
   constructor() { }
 
   ngOnInit() {

@@ -1,0 +1,33 @@
+<ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-title>Ansprechpartner</ion-title>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>{{person.prename}} {{person.name}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="call" slot="start"></ion-icon>
+          <ion-label>
+            <ion-note>geschäftlich: </ion-note>{{person.phonenumber}}<br>
+            <ion-note>mobil: </ion-note>{{person.mobilenumber}}
+          </ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-icon name="mail" slot="start"></ion-icon>
+          <ion-label>
+            {{person.mail}}
+          </ion-label>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-button id="1" name="Ansprechparnter-Edit-Btn" fill="outline" (click)="onClick($event)">
+            Bearbeiten
+          </ion-button>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>

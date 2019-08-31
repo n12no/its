@@ -12,6 +12,10 @@ import { AuthenticationService } from '../services/authentication.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { firebaseConfig } from '../firebase.conf';
+import { CrudService } from '../services/crud.service';
+import { FirestoreCompanyAdressService } from '../services/firestore-company-adress.service';
+import { FirestoreContactService } from '../services/firestore-contact.service';
+import { FirestoreBillingAdressService } from '../services/firestore-billing-adress.service';
 firebase.initializeApp(firebaseConfig);
 
 @NgModule({
@@ -43,7 +47,11 @@ firebase.initializeApp(firebaseConfig);
   AngularFireAuthModule
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    CrudService,
+    FirestoreCompanyAdressService,
+    FirestoreContactService,
+    FirestoreBillingAdressService
   ]
 })
 export class WelcomeModule { }

@@ -14,12 +14,11 @@ import { IonTabs } from '@ionic/angular';
   styleUrls: ['./company.component.scss'],
 })
 export class CompanyComponent implements OnInit {
-  @ViewChild('tabs') tabs : IonTabs;
   company: Company;
   companyAdress: CompanyAdress;
   billingAdress: BillingAdress;
   person: Person;
-  selectedTab = 'profil';
+  selectedTab = '';
   constructor(public companyService: CompanyService, public router: Router, public authService: AuthenticationService) { }
 
   ngOnInit() {

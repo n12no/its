@@ -4,22 +4,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-tabs #tabs>
-    <ion-tab-bar slot="top" color="secondary">
-      <ion-tab-button tabIndex=0 [selected]="selectedTab == 'profil'" (click)="selectedTab = 'profil'">
-        <ion-icon name="home"></ion-icon>
-        <ion-label>Allgemein</ion-label>
-      </ion-tab-button>
-      <ion-tab-button tabIndex=1 [selected]="selectedTab == 'contact'" (click)="selectedTab = 'contact'">
-        <ion-icon name="contact"></ion-icon>
-        <ion-label>Ansprechpartner</ion-label>
-      </ion-tab-button>      
-      <ion-tab-button tabIndex=2 [selected]="selectedTab == 'billing-adress'" (click)="selectedTab = 'billing-adress'">
-        <ion-icon name="card"></ion-icon>
-        <ion-label>Rechnungsadresse</ion-label>
-      </ion-tab-button>
-    </ion-tab-bar>
-  </ion-tabs>
+  
   <div *ngIf="selectedTab == 'profil'" padding>
     <ion-grid>
       <ion-row>
@@ -27,13 +12,13 @@
           <ion-title>Allgemeine Informationen</ion-title>
         </ion-col>
       </ion-row>
-    </ion-grid>
-    <ion-grid>
       <ion-row>
         <ion-col>
-          <div class="logo">
-            <img src="../../assets/HGI_Logo.svg" alt="">
-          </div>
+          <ion-avatar>         <img src="../../assets/HGI_Logo.svg" alt="">
+          </ion-avatar>
+          <!-- <div class="logo"> -->
+         
+          <!-- </div> -->
         </ion-col>
         <ion-col>
           <ion-item>

@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../../services/authentication.service';
-import { Company } from 'src/app/shared/company.model';
+
 import { CrudService } from 'src/app/services/crud.service';
-import { Person } from 'src/app/shared/person.model';
-import { CompanyAdress } from 'src/app/shared/company.adress.model';
-import { BillingAdress } from 'src/app/shared/billing.adress.model';
-import { create } from 'domain';
+
 import { FirestoreCompanyAdressService } from 'src/app/services/firestore-company-adress.service';
 import { FirestoreContactService } from 'src/app/services/firestore-contact.service';
 import { FirestoreBillingAdressService } from 'src/app/services/firestore-billing-adress.service';

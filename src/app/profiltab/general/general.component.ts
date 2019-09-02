@@ -21,14 +21,4 @@ export class GeneralComponent implements OnInit {
     this.companyAdress = this.companyService.getCompanyAdress();
     console.log(this.company);
   }
-  onLogOut() {
-    this.authService.logoutUser().then(() => {
-      console.log('LogOut');
-      this.router.navigateByUrl('');
-    }, err => {
-      console.log(err);
-      console.log(err.message);
-    });
-  }
-
 }

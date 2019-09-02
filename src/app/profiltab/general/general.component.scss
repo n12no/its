@@ -5,10 +5,14 @@
 img {
     padding-top: 5px;
 
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
 
-    border: var(--ion-color-lightgrey) 2px solid;
+    border: var(--ion-color-darkgrey) 2px solid;
     border-radius: 50%;
 
+}
+ion-grid {
+    display: grid;
+    align-content: center;
 }

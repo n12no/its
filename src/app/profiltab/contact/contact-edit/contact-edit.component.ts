@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { CompanyService } from '../../company.service';
+import { CompanyService } from 'src/app/company/company.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Person } from 'src/app/shared/person.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class ContactEditComponent implements OnInit {
   regExpEmail: RegExp = new RegExp('^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$');
   contactForm: FormGroup;
   contact: Person;
-  constructor(public router: Router, public formBuilder: FormBuilder, public companyService: CompanyService) {
+  constructor(private router: Router, private companyService: CompanyService, private formBuilder: FormBuilder) {
     this.contact = this.companyService.getContact();
     this.contactForm = formBuilder.group({
       prename: [this.contact.prename, Validators.compose([
@@ -35,9 +35,12 @@ export class ContactEditComponent implements OnInit {
         Validators.pattern(this.regExpEmail), Validators.required
       ])]
     });
-  }
+   }
 
-  ngOnInit() { }
+  ngOnInit() {}
+  onEdit() {
+    this.router.navigateByUrl('tabs/profiltab/contact/edit');
+  }
   submitContact() {
     console.log(this.contactForm);
     this.contact = {
@@ -49,9 +52,12 @@ export class ContactEditComponent implements OnInit {
     };
     this.companyService.editContact(this.contact);
     this.contactForm.reset();
+  
     console.log(this.contact);
   }
   onCancel() {
     this.contactForm.reset();
+  
   }
+
 }

@@ -5,6 +5,9 @@ import { NgModule } from '@angular/core';
 import { GeneralComponent } from './general/general.component';
 import { ContactComponent } from './contact/contact.component';
 import { BillingAdressComponent } from './billing-adress/billing-adress.component';
+import { GeneralEditComponent } from './general/general-edit/general-edit.component';
+import { ContactEditComponent } from './contact/contact-edit/contact-edit.component';
+import { BillingAdressEditComponent } from './billing-adress/billing-adress-edit/billing-adress-edit.component';
 // const routes: Routes = [
 //     {
 //         path: '/tabs/profiltab', redirectTo: 'profiltab/general', pathMatch: 'full'
@@ -24,8 +27,13 @@ const routes: Routes = [
                     {
                         path: '',
                         component: GeneralComponent
+                    },
+                    {
+                        path: 'edit',
+                        component: GeneralEditComponent
                     }
                 ]
+
             },
             {
                 path: 'contact',
@@ -33,6 +41,10 @@ const routes: Routes = [
                     {
                         path: '',
                         component: ContactComponent
+                    },
+                    {
+                        path: 'edit',
+                        component: ContactEditComponent
                     }
                 ]
             },
@@ -42,6 +54,9 @@ const routes: Routes = [
                     {
                         path: '',
                         component: BillingAdressComponent
+                    }, {
+                        path: 'edit',
+                        component: BillingAdressEditComponent
                     }
                 ]
             },

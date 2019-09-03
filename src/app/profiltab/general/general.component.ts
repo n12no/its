@@ -21,4 +21,7 @@ export class GeneralComponent implements OnInit {
     this.companyAdress = this.companyService.getCompanyAdress();
     console.log(this.company);
   }
+  onEdit() {
+    this.router.navigateByUrl('tabs/profiltab/general/edit');
+  }
 }

@@ -26,5 +26,8 @@ export class ContactComponent implements OnInit {
     const contact = this.firestoreContact.readContact(auth().currentUser.uid);
     console.log(contact);
   }
+  onEdit() {
+    this.router.navigateByUrl('tabs/profiltab/contact/edit');
+  }
 
 }

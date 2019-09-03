@@ -7,6 +7,7 @@ import { ProfilTabRoutingModule } from './profiltab.router.module';
 import { GeneralComponent } from './general/general.component';
 import { ContactComponent } from './contact/contact.component';
 import { BillingAdressComponent } from './billing-adress/billing-adress.component';
+import { FirestoreContactService } from '../services/firestore-contact.service';
 
 
 @NgModule({
@@ -21,6 +22,9 @@ import { BillingAdressComponent } from './billing-adress/billing-adress.componen
     IonicModule,
     FormsModule,
     ProfilTabRoutingModule
+  ],
+  providers: [
+    FirestoreContactService
   ]
 })
 export class ProfiltabModule { }

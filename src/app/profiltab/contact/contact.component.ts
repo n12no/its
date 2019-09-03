@@ -19,5 +19,8 @@ export class ContactComponent implements OnInit {
     this.person = this.companyService.getContact();
     console.log(this.person);
   }
+  onEdit() {
+    this.router.navigateByUrl('tabs/profiltab/contact/edit');
+  }
 
 }

@@ -1,0 +1,94 @@
+<ion-content>
+<div class="card-center">
+  <form [formGroup]="contactForm" (ngSubmit)="submitContact()">
+      <ion-grid>
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Vorname</ion-label>
+                      <ion-input formControlName="prename"></ion-input>
+                  </ion-item>
+                  <div *ngIf="!contactForm.controls.prename.valid && contactForm.controls.prename.touched"
+                      class="error-message">
+                      <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                      <ion-note color="danger">Vorname eingeben! </ion-note>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Nachname</ion-label>
+                      <ion-input formControlName="lastname"></ion-input>
+                  </ion-item>
+                  <div *ngIf="!contactForm.controls.lastname.valid && contactForm.controls.lastname.touched"
+                      class="error-message">
+                      <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                      <ion-note color="danger">Nachname eingeben! </ion-note>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-item lines="none">
+                      <ion-icon name="call" slot="start"></ion-icon>
+                      <ion-label>
+                          Kontakt
+                      </ion-label>
+                  </ion-item>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Telefonnummer</ion-label>
+                      <ion-input formControlName="phonenumber"></ion-input>
+                  </ion-item>
+                  <div *ngIf="!contactForm.controls.phonenumber.valid && contactForm.controls.phonenumber.touched"
+                      class="error-message">
+                      <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                      <ion-note color="danger">Telefonnummer eingeben! </ion-note>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">Mobilenummer</ion-label>
+                      <ion-input formControlName="mobilenumber"></ion-input>
+                  </ion-item>
+                  <div *ngIf="!contactForm.controls.mobilenumber.valid && contactForm.controls.mobilenumber.touched"
+                      class="error-message">
+                      <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                      <ion-note color="danger">Handynummer eingeben! </ion-note>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-item>
+                      <ion-label position="floating">E-Mail</ion-label>
+                      <ion-input formControlName="email"></ion-input>
+                  </ion-item>
+                  <div *ngIf="!contactForm.controls.email.valid && contactForm.controls.email.touched"
+                      class="error-message">
+                      <ion-icon color="danger" name="information-circle" slot="start"></ion-icon>
+                      <ion-note color="danger">E-Mail eingeben! </ion-note>
+                  </div>
+              </ion-col>
+          </ion-row>
+          <ion-row>
+              <ion-col>
+                  <ion-button [disabled]="!contactForm.valid" type="submit" routerLink="/tabs/profiltab/contact"
+                      routerDirection="back" fill="solid">
+                      Speichern
+                  </ion-button>
+                  <ion-button routerLink="/tabs/profiltab/contact" routerDirection="back" fill="clear" (click)="onCancel()">
+                      Abbrechen
+                  </ion-button>
+              </ion-col>
+          </ion-row>
+      </ion-grid>
+  </form>
+</div>
+</ion-content>

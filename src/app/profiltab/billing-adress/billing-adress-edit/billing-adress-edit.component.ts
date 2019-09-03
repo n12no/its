@@ -1,23 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from 'src/app/company/company.service';
-import { AuthenticationService } from 'src/app/services/authentication.service';
-import { BillingAdress } from 'src/app/shared/billing.adress.model';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { BillingAdress } from 'src/app/shared/billing.adress.model';
+import { CompanyService } from 'src/app/company/company.service';
 
 @Component({
-  selector: 'app-billing-adress',
-  templateUrl: './billing-adress.component.html',
-  styleUrls: ['./billing-adress.component.scss'],
+  selector: 'app-billing-adress-edit',
+  templateUrl: './billing-adress-edit.component.html',
+  styleUrls: ['./billing-adress-edit.component.scss'],
 })
-export class BillingAdressComponent implements OnInit {
+export class BillingAdressEditComponent implements OnInit {
   regExpName: RegExp = new RegExp('[a-zA-Z äöüÄÖÜ]*');
   regExpNumber: RegExp = new RegExp('^[0-9]*$');
   regExpPostalcode: RegExp = new RegExp('^[0-9]{5}$');
   billingAdressForm: FormGroup;
   billingAdress: BillingAdress;
 
-  constructor(private router: Router, private companyService: CompanyService, private formBuilder: FormBuilder, private authService: AuthenticationService) {
+  constructor(private router: Router, private formBuilder: FormBuilder, private companyService: CompanyService) {
     this.billingAdress = this.companyService.getBillingAdress();
     this.billingAdressForm = formBuilder.group({
       companyName: [this.billingAdress.companyName, Validators.compose([Validators.pattern(this.regExpName), Validators.required])],
@@ -31,14 +30,7 @@ export class BillingAdressComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log('BillingAdressComponent: ngOnInit');
-    this.billingAdress = this.companyService.getBillingAdress();
-    console.log(this.billingAdress);
-  }
-  onEdit() {
-    this.router.navigateByUrl('tabs/profiltab/billing-adress/edit');
-  }
+  ngOnInit() { }
   submitBillingAdress() {
     this.billingAdress = {
       companyName: this.billingAdressForm.controls.companyName.value,
@@ -52,13 +44,11 @@ export class BillingAdressComponent implements OnInit {
     };
     this.companyService.editBillingAdress(this.billingAdress);
     this.billingAdressForm.reset();
-    this.router.navigateByUrl('tabs/profiltab/billing-adress');
     console.log(this.billingAdress);
 
   }
   onCancel() {
     this.billingAdressForm.reset();
-    this.router.navigateByUrl('tabs/profiltab/billing-adress');
   }
 
 }

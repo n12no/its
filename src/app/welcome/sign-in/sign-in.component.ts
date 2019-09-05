@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/services/authentication.service';
+import { AlertController } from '@ionic/angular';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -12,15 +14,17 @@ export class SignInComponent implements OnInit {
   regExpEmail: RegExp = new RegExp('^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$');
   regExpPassword: RegExp = new RegExp('');
   signInForm: FormGroup;
-  constructor(public router: Router, public formBuilder: FormBuilder, public authService: AuthenticationService) {
+
+  constructor(public router: Router, public formBuilder: FormBuilder, public authService: AuthenticationService,
+              public alertController: AlertController, private userService: UserService) {
     this.signInForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.pattern(this.regExpEmail), Validators.required])],
       password: ['', Validators.compose([Validators.pattern(''), Validators.required])]
     });
   }
 
-  ngOnInit() { }
-  signIn() {
+ngOnInit() { }
+signIn() {
     this.authService.loginUser(this.signInForm.controls.email.value, this.signInForm.controls.password.value)
       .then(res => {
         console.log(res);
@@ -32,7 +36,7 @@ export class SignInComponent implements OnInit {
       });
 
   }
-  onCancel() {
+onCancel() {
     this.signInForm.reset();
   }
 
